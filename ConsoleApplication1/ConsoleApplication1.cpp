@@ -13,6 +13,12 @@ bool isPrime(int n) {
     return true;
 }
 
+// Kiểm tra năm nhuận
+bool isLeapYear(int year) {
+    // Năm nhuận nếu chia hết cho 4 nhưng không chia hết cho 100, hoặc chia hết cho 400
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
+
 int main()
 {
 
@@ -22,32 +28,42 @@ int main()
         // Hiển thị menu
         cout << "========== Menu ==========" << endl;
         cout << "1. Kiểm tra số nguyên tố" << endl;
+        cout << "2. Kiểm tra năm nhuận" << endl;
         cout << "3. Thoát" << endl;
         cout << "==========================" << endl;
         cout << "Chọn chức năng (1-3): ";
         cin >> choice;
 
         switch (choice) {
-        case 1:
-            // Chức năng kiểm tra số nguyên tố
-            cout << "Nhập số nguyên dương: ";
-            cin >> number;
-            if (isPrime(number)) {
-                cout << number << " là số nguyên tố." << endl;
-            }
-            else {
-                cout << number << " không phải là số nguyên tố." << endl;
-            }
-            break;
+            case 1:
+                // Chức năng kiểm tra số nguyên tố
+                cout << "Nhập số nguyên dương: ";
+                cin >> number;
+                if (isPrime(number)) {
+                    cout << number << " là số nguyên tố." << endl;
+                } else {
+                    cout << number << " không phải là số nguyên tố." << endl;
+                }
+                break;
 
+            case 2:
+                // Chức năng kiểm tra năm nhuận
+                cout << "Nhập năm: ";
+                cin >> year;
+                if (isLeapYear(year)) {
+                    cout << year << " là năm nhuận." << endl;
+                } else {
+                    cout << year << " không phải là năm nhuận." << endl;
+                }
+                break;
 
-        case 3:
-            // Thoát chương trình
-            cout << "Cảm ơn bạn đã sử dụng chương trình!" << endl;
-            return 0;
+            case 3:
+                // Thoát chương trình
+                cout << "Cảm ơn bạn đã sử dụng chương trình!" << endl;
+                return 0;
 
-        default:
-            cout << "Lựa chọn không hợp lệ. Vui lòng chọn lại." << endl;
+            default:
+                cout << "Lựa chọn không hợp lệ. Vui lòng chọn lại." << endl;
         }
     }
 
